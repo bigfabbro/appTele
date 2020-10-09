@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router} from '@angular/router';
 import { Observable } from 'rxjs';
-import {AuthAPIKeyService} from './auth-apikey.service';
+import {AuthAPIKeyService} from '../services/auth-apikey.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class LoggedGuard implements CanActivate {
+export class AuthAPIKEYGuard implements CanActivate {
+
   constructor(private router: Router, private authService: AuthAPIKeyService) {
   }
   canActivate(
@@ -14,11 +16,12 @@ export class LoggedGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const Logged = this.authService.getLogged();
     if (Logged){
-      this.router.navigateByUrl('/profile');
-      return false;
-    }
-    else{
       return true;
     }
+    else{
+      this.router.navigateByUrl('/login');
+      return false;
+    }
   }
+
 }

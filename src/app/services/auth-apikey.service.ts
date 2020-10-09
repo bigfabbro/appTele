@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {ConstantsService} from './constants.service';
 import set = Reflect.set;
+import {Router} from '@angular/router';
 
 
 @Injectable({
@@ -12,8 +13,8 @@ export class AuthAPIKeyService {
 
   private isLogged = false;
 
-  constructor(private http: HttpClient, private constService: ConstantsService) {
-      const APIKey = localStorage.getItem(this.constService.localStorageKey);
+  constructor(private http: HttpClient, private constService: ConstantsService, private router: Router) {
+      const APIKey = this.retrieveAPIKey();
       if (APIKey != null){
         this.isLogged = true;
       }
@@ -26,22 +27,14 @@ export class AuthAPIKeyService {
     return this.isLogged;
   }
   authenticateAPIKey(APIKey: string): void{
-    let headers = new HttpHeaders();
-    headers = headers.append('Authorization', APIKey);
-    console.log(headers);
-    this.http.get(this.constService.authServerURL, {headers}).subscribe(
-      success => this.saveAPIKey(APIKey),
-      error => this.handleLoginError(error)
-    );
-  }
-  handleLoginError(error: HttpErrorResponse): void{
-    if (error.status === 401){
-      console.log(error.message);
-    }
+    this.saveAPIKey(APIKey);
+    this.http.get(this.constService.authServerURL).subscribe();
   }
   saveAPIKey(APIKey: string): void{
-    this.setIsLogged(true);
     localStorage.setItem(this.constService.localStorageKey, APIKey);
+  }
+  retrieveAPIKey(): string | null{
+   return localStorage.getItem(this.constService.localStorageKey);
   }
 }
 
