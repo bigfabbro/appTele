@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "apptelevideo"
+    }
+  },
+  "defaultProject": "apptelevideo",
+  "cli": {
+    "analytics": false
+  }
 }

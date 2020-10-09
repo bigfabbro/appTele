@@ -1,0 +1,8 @@
+<form (ngSubmit)="loginUser()" [formGroup]="APIKeyForm">
+  <div>
+    <input type="text" [placeholder]="placeHolder" formControlName="apiKey">
+  </div>
+  <div>
+    <button type="submit" [disabled]="APIKeyForm.invalid">Submit</button>
+  </div>
+</form>
