@@ -12,7 +12,7 @@ const routes = [{
   path: 'login', component: LoginComponent, canActivate: [LoggedGuard]
 },
   {
-    path: '', canActivate: [AuthAPIKEYGuard], children: [
+    path: '', canActivateChild: [AuthAPIKEYGuard], children: [
       {path: '', component: HomeComponent},
       {path: 'profile', component: ProfileComponent},
       {path: '**', redirectTo: ''}

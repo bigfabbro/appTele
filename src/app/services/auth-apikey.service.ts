@@ -23,7 +23,15 @@ export class AuthAPIKeyService {
   setIsLogged(logged: boolean): void{
     this.isLogged = logged;
   }
+
   getLogged(): boolean{
+    const APIKey = this.retrieveAPIKey();
+    if (APIKey != null){
+      this.isLogged = true;
+    }
+    else{
+      this.isLogged = false;
+    }
     return this.isLogged;
   }
   authenticateAPIKey(APIKey: string): void{
