@@ -32,8 +32,7 @@ export class HTTPAPIKeyInterceptor implements HttpInterceptor {
       catchError((err: any) => {
         if (err instanceof HttpErrorResponse){
           if (err.status === 401){
-            localStorage.removeItem(this.constService.localStorageKey);
-            this.authAPIKeyService.setIsLogged(false);
+            this.authAPIKeyService.deleteAPIKey();
             this.router.navigateByUrl(this.constService.URL401);
           }
         }

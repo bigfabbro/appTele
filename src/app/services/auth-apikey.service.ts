@@ -36,5 +36,10 @@ export class AuthAPIKeyService {
   retrieveAPIKey(): string | null{
    return localStorage.getItem(this.constService.localStorageKey);
   }
+
+  deleteAPIKey(): void {
+    localStorage.removeItem(this.constService.localStorageKey);
+    this.setIsLogged(false);
+  }
 }
 
