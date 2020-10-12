@@ -19,7 +19,7 @@ export class HTTPAPIKeyInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const APIKey = localStorage.getItem(this.constService.localStorageKey);
-    const clone = request.clone({setHeaders: {Authorization: `${APIKey}`}});
+    const clone = request.clone({setHeaders: {Authorization: `Bearer ${APIKey}`}});
     return next.handle(clone).pipe(
       tap( event => {
         if (event instanceof HttpResponse){
