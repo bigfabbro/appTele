@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthAPIKeyService} from '../services/auth-apikey.service';
+import {AuthAPIKeyService} from '../../services/auth-apikey.service';
 import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ConstantsService} from '../services/constants.service';
+import {ConstantsService} from '../../services/constants.service';
 
 @Component({
   selector: 'tele-login',
