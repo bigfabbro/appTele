@@ -7,7 +7,7 @@ import {ConstantsService} from '../../services/constants.service';
 @Component({
   selector: 'tele-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
 
@@ -25,5 +25,8 @@ export class LoginComponent implements OnInit {
   }
   loginUser(): void{
     this.authAPIKeyService.authenticateAPIKey(this.APIKeyForm.value.apiKey);
+  }
+  getErrorMessage(): string{
+    return 'You must enter a value';
   }
 }

@@ -48,6 +48,7 @@ export class AuthAPIKeyService {
   deleteAPIKey(): void {
     localStorage.removeItem(this.constService.localStorageKey);
     this.setIsLogged(false);
+    this.router.navigateByUrl(this.constService.loginURL);
   }
 }
 

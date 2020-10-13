@@ -1,8 +1,18 @@
-<form (ngSubmit)="loginUser()" [formGroup]="APIKeyForm">
-  <div>
-    <input type="text" [placeholder]="placeHolder" formControlName="apiKey">
-  </div>
-  <div>
-    <button type="submit" [disabled]="APIKeyForm.invalid">Submit</button>
-  </div>
-</form>
+
+<mat-card>
+  <mat-card-title>Login</mat-card-title>
+  <mat-card-content>
+    <form (ngSubmit)="loginUser()" [formGroup]="APIKeyForm">
+      <p>
+        <mat-form-field appearance="fill" floatLabel="auto">
+          <mat-label [textContent]="placeHolder"></mat-label>
+          <input matInput formControlName="apiKey">
+        <mat-error *ngIf="APIKeyForm.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </p>
+      <div>
+        <button type="submit" mat-raised-button [disabled]="APIKeyForm.invalid">Submit</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

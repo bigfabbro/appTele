@@ -12,6 +12,15 @@ import { ProfileComponent } from './components/profile/profile.component';
 import {ConstantsService} from './services/constants.service';
 import {RoutingModule} from './modules/routing/routing.module';
 import {HTTPAPIKeyInterceptor} from './interceptors/http-apikey.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MaterialModule} from './modules/material/material.module';
+import { MainNavComponent } from './components/main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -19,13 +28,22 @@ import {HTTPAPIKeyInterceptor} from './interceptors/http-apikey.interceptor';
     LoginComponent,
     HomeComponent,
     ProfileComponent,
+    MainNavComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RoutingModule
+    RoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [AuthAPIKEYGuard, AuthAPIKeyService, ConstantsService,
     { provide: HTTP_INTERCEPTORS,
