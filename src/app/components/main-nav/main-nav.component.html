@@ -11,11 +11,7 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <span>AppTelevideo</span>
-      <span class="spacer"></span>
-      <button mat-icon-button aria-label="Logout" (click)="logoutUser()">
-        <mat-icon>exit_to_app</mat-icon>
-      </button>
+
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -24,7 +20,11 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-
+      <span>AppTelevideo</span>
+      <span class="spacer"></span>
+      <button mat-icon-button aria-label="Logout" (click)="logoutUser()">
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>
